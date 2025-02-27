@@ -1,20 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
 
 :root {
-  --background: #FDF6E3;
-  --container-bg: #FEE9D8;
-  --text-color: #5A514A;
-  --button-bg: #E4A27E;
-  --button-hover: #D88C6A;
-  --progress-bg: #F4D4C0;
-  --progress-fill: #E18F68;
+  --background: linear-gradient(135deg, #5B3A29, #D19C67, #F4D2A2);
+  --text-color: #2D1B14;
+  --highlight: #F3B172;
+  --shadow: rgba(0, 0, 0, 0.6);
+  --button-bg: #8C5E47;
+  --button-hover: #A77452;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nunito', sans-serif;
+  font-family: 'Playfair Display', serif;
   background: var(--background);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,96 +22,46 @@ body {
 }
 
 .container {
-  background: var(--container-bg);
-  padding: 30px;
-  border-radius: 20px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 0 30px var(--shadow);
+  backdrop-filter: blur(10px);
   width: 90%;
-  max-width: 400px;
+  max-width: 450px;
   text-align: center;
-  animation: fadeIn 0.8s ease;
 }
 
 .title {
-  font-size: 28px;
+  font-size: 34px;
   font-weight: bold;
-  color: var(--text-color);
-  margin-bottom: 20px;
-}
-
-.map {
-  background: url('map.png') no-repeat center;
-  background-size: cover;
-  height: 150px;
-  border-radius: 10px;
-  position: relative;
-  margin-bottom: 20px;
-}
-
-.path {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  height: 10px;
-  background: var(--progress-bg);
-  border-radius: 5px;
-}
-
-.checkpoint {
-  width: 15px;
-  height: 15px;
-  background: var(--progress-fill);
-  border-radius: 50%;
-  position: absolute;
-  top: -3px;
-}
-
-#character {
-  width: 40px;
-  position: absolute;
-  bottom: 20px;
-  left: 10%;
-  transition: left 0.5s ease;
-}
-
-.progress-container {
-  background: var(--progress-bg);
-  border-radius: 10px;
-  height: 10px;
-  width: 100%;
-  margin-bottom: 15px;
-  overflow: hidden;
-}
-
-.progress-bar {
-  height: 100%;
-  width: 0%;
-  background: var(--progress-fill);
-  transition: width 0.5s ease;
-}
-
-.progress-text {
-  font-size: 14px;
-  color: var(--text-color);
-  margin-bottom: 20px;
+  color: var(--highlight);
+  margin-bottom: 30px;
 }
 
 #question-display {
-  font-size: 20px;
+  font-size: 22px;
+  font-weight: 400;
   color: var(--text-color);
   margin-bottom: 20px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
 }
 
 #answer-input {
   padding: 12px;
-  font-size: 16px;
-  border: 2px solid #D8B8A2;
-  border-radius: 10px;
-  width: 100%;
-  margin-bottom: 20px;
-  background: #fff;
+  font-size: 18px;
+  border: none;
+  border-bottom: 2px solid var(--highlight);
+  background: transparent;
   color: var(--text-color);
+  width: 100%;
+  outline: none;
+  margin-bottom: 20px;
+}
+
+::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .buttons {
@@ -123,19 +73,42 @@ body {
   background: var(--button-bg);
   color: #fff;
   border: none;
-  padding: 12px 30px;
-  font-size: 16px;
+  padding: 12px 40px;
+  font-size: 18px;
   font-weight: bold;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
 
 #next-button:hover {
   background: var(--button-hover);
+  transform: scale(1.05);
 }
 
-/* Анимация появления */
+.progress-container {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  height: 12px;
+  width: 100%;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: var(--highlight);
+  transition: width 0.5s ease;
+}
+
+.progress-text {
+  font-size: 16px;
+  color: var(--highlight);
+  margin-bottom: 20px;
+}
+
+/* Анимации */
 @keyframes fadeIn {
   from {
     opacity: 0;

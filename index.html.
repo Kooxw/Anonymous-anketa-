@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анонимная анкета для незнакомцев</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            background: white;
+        }
+        h1 {
+            text-align: center;
+            color: #444;
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        input[type="text"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5548d9;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Анонимная анкета для незнакомцев</h1>
+
+    <form id="anonymousForm">
+        <label for="name">Твоё имя (или что-то загадочное):</label>
+        <input type="text" id="name" name="name" placeholder="Например, Зелёная лампа">
+
+        <label for="firstWords">Что бы ты мне сказал(а) первым делом?</label>
+        <input type="text" id="firstWords" name="firstWords" placeholder="Привет, ты случайно не любишь кофе?">
+
+        <label for="randomWord">Какое слово приходит в голову обо мне?</label>
+        <input type="text" id="randomWord" name="randomWord" placeholder="Радуга">
+
+        <label for="advice">Что бы ты посоветовал(а) мне сделать прямо сейчас?</label>
+        <input type="text" id="advice" name="advice" placeholder="Съесть что-то вкусное, конечно!">
+
+        <label for="smile">Что тебя заставило в последний раз искренне улыбнуться?</label>
+        <input type="text" id="smile" name="smile" placeholder="Может, случайная встреча или забавный момент?">
+
+        <label for="message">Оставь мне анонимное послание на будущее:</label>
+        <textarea id="message" name="message" rows="4" placeholder="Ты круче, чем думаешь!"></textarea>
+
+        <label for="playlist">Твой плейлист для этого момента (ссылка):</label>
+        <input type="text" id="playlist" name="playlist" placeholder="Вставь ссылку на свой плейлист">
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <script>
+        document.getElementById('anonymousForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Спасибо, что поделился(ась)!');
+        });
+    </script>
+
+</body>
+</html>

@@ -3,13 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Анонимная анкета</title>
+  <title>Квест-анкета</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <h1 class="title">Твоя анонимная анкета</h1>
+    <h1 class="title">Твоя анонимная анкета-квест</h1>
+
+    <div class="map">
+      <div class="path">
+        <div class="checkpoint" style="left: 10%"></div>
+        <div class="checkpoint" style="left: 30%"></div>
+        <div class="checkpoint" style="left: 50%"></div>
+        <div class="checkpoint" style="left: 70%"></div>
+        <div class="checkpoint" style="left: 90%"></div>
+      </div>
+      <img src="character.png" alt="Персонаж" id="character">
+    </div>
 
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
@@ -20,7 +31,7 @@
     <input type="text" id="answer-input" placeholder="Твой ответ..." />
 
     <div class="buttons">
-      <button id="next-button">Далее</button>
+      <button id="next-button" title="Перейти к следующему вопросу">Далее</button>
     </div>
   </div>
 

@@ -12,10 +12,10 @@
         <div class="progress-container">
             <div class="map">
                 <img src="map.png" alt="Карта квеста" class="map-image">
-                <div class="character"></div>
+                <div class="character" id="character"></div>
             </div>
             <div class="progress-bar">
-                <div class="progress"></div>
+                <div class="progress" id="progress"></div>
             </div>
         </div>
         <div class="question-container">
@@ -24,6 +24,31 @@
             <button onclick="nextQuestion()">Далее</button>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        const questions = [
+            "Твое имя (или что-то загадочное)?",
+            "Что бы ты мне сказал(а) первым делом?",
+            "Какое слово у тебя ассоциируется со мной?",
+            "Что бы ты посоветовал(а) мне сделать прямо сейчас?",
+            "Что тебя заставило в последний раз искренне улыбнуться?",
+            "Оставь мне анонимное послание на будущее?",
+            "Твой плейлист для этого момента (ссылка)?"
+        ];
+
+        let currentQuestion = 0;
+        const character = document.getElementById("character");
+        const progress = document.getElementById("progress");
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                document.getElementById("question-text").innerText = questions[currentQuestion];
+                progress.style.width = `${(currentQuestion + 1) / questions.length * 100}%`;
+                character.style.transform = `translateX(${(currentQuestion + 1) * 50}px)`;
+            }
+        }
+
+        document.getElementById("question-text").innerText = questions[currentQuestion];
+    </script>
 </body>
 </html>

@@ -1,26 +1,22 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Квест-анкета для незнакомцев</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Простая анимированная анкета</title>
+  <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <div class="map-container">
-        <div class="map">
-            <img src="map.png" alt="Карта квеста">
-            <div class="character"></div>
-        </div>
-    </div>
 
-    <div class="question-box hidden" id="question-box">
-        <p id="question-text">Вопрос появится здесь</p>
-        <input type="text" id="answer" placeholder="Твой ответ...">
-        <button id="next-btn">Далее</button>
+  <div class="question-container">
+    <h1>Анонимная анкета</h1>
+    <div id="question-display"></div>
+    <input type="text" id="answer-input" placeholder="Ваш ответ..."/>
+    <div class="buttons">
+      <button id="next-button">Далее</button>
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

@@ -1,100 +1,26 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Анонимная анкета для незнакомцев</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
-        body {
-            font-family: 'Press Start 2P', cursive;
-            background: black;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            overflow: hidden;
-        }
-
-        .container {
-            background: rgba(0, 0, 0, 0.8);
-            padding: 30px;
-            border: 2px solid #00ffcc;
-            border-radius: 15px;
-            box-shadow: 0 0 20px #00ffcc;
-            width: 90%;
-            max-width: 600px;
-            text-align: center;
-            animation: glow 2s infinite alternate;
-        }
-
-        h1 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: #00ffcc;
-            text-shadow: 0 0 8px #00ffcc;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 2px solid #00ffcc;
-            background: black;
-            color: white;
-            border-radius: 10px;
-            font-family: inherit;
-            font-size: 12px;
-        }
-
-        input::placeholder, textarea::placeholder {
-            color: #00ffcc;
-            opacity: 0.7;
-        }
-
-        button {
-            background: #00ffcc;
-            color: black;
-            padding: 15px;
-            font-size: 14px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            font-family: inherit;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        button:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px #00ffcc;
-        }
-
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 10px #00ffcc;
-            }
-            to {
-                box-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffcc;
-            }
-        }
-    </style>
+    <title>Квест-анкета для незнакомцев</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Анонимная анкета для незнакомцев</h1>
-        
-        <input type="text" placeholder="Твоё имя (или что-то загадочное)">
-        <input type="text" placeholder="Что бы ты мне сказал(а) первым делом?">
-        <input type="text" placeholder="Какое слово приходит в голову обо мне?">
-        <input type="text" placeholder="Что бы ты посоветовал(а) мне сделать прямо сейчас?">
-        <input type="text" placeholder="Что тебя заставило улыбнуться в последний раз?">
-        <textarea placeholder="Оставь мне анонимное послание на будущее"></textarea>
-        <input type="url" placeholder="Твой плейлист для этого момента (ссылка)">
-        
-        <button>Отправить</button>
+    <div class="map-container">
+        <div class="map">
+            <img src="map.png" alt="Карта квеста">
+            <div class="character"></div>
+        </div>
     </div>
+
+    <div class="question-box hidden" id="question-box">
+        <p id="question-text">Вопрос появится здесь</p>
+        <input type="text" id="answer" placeholder="Твой ответ...">
+        <button id="next-btn">Далее</button>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

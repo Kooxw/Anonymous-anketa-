@@ -1,53 +1,27 @@
 const questions = [
-  "Как тебя можно назвать (или оставь загадку)?",
-  "Что бы ты сказал(а) мне первым делом?",
-  "Какое слово у тебя ассоциируется со мной?",
-  "Что мне стоит сделать прямо сейчас?",
-  "Когда ты в последний раз чувствовал радость?",
-  "Оставь мне анонимное послание на будущее:",
-  "Поделись плейлистом (ссылка или название):"
+    "Твоё имя (или что-то загадочное)?",
+    "Что бы ты мне сказал(а) первым делом?",
+    "Какое слово у тебя ассоциируется со мной?",
+    "Что бы ты посоветовал(а) мне сделать прямо сейчас?",
+    "Что тебя заставило улыбнуться в последний раз?",
+    "Оставь мне анонимное послание на будущее",
+    "Твой плейлист для этого момента (ссылка):"
 ];
 
-let currentQuestionIndex = 0;
-const questionDisplay = document.getElementById("question-display");
-const answerInput = document.getElementById("answer-input");
-const nextButton = document.getElementById("next-button");
-const progressBar = document.getElementById("progress-bar");
-const progressText = document.getElementById("progress-text");
-const character = document.getElementById("character");
-const checkpoints = document.querySelectorAll(".checkpoint");
+let currentQuestion = 0;
+const character = document.querySelector('.character');
+const progress = document.querySelector('.progress');
 
-function showQuestion(index) {
-  questionDisplay.textContent = questions[index];
-  answerInput.value = "";
-  answerInput.focus();
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        document.getElementById("question-text").textContent = questions[currentQuestion];
+        progress.style.width = ${(currentQuestion / (questions.length - 1)) * 100}%;
 
-  const progressPercent = ((index + 1) / questions.length) * 100;
-  progressBar.style.width = progressPercent + "%";
-  progressText.textContent = `Вопрос ${index + 1} из ${questions.length}`;
-
-  const characterPosition = checkpoints[index]?.style.left || "90%";
-  character.style.left = characterPosition;
+        // Перемещение персонажа по рельсам
+        const positions = ["5%", "20%", "35%", "50%", "65%", "80%", "95%"];
+        character.style.left = positions[currentQuestion];
+    }
 }
 
-nextButton.addEventListener("click", () => {
-  const userAnswer = answerInput.value.trim();
-  console.log(`Ответ: ${userAnswer}`);
-
-  currentQuestionIndex++;
-  if (currentQuestionIndex < questions.length) {
-    showQuestion(currentQuestionIndex);
-  } else {
-    finishSurvey();
-  }
-});
-
-function finishSurvey() {
-  questionDisplay.textContent = "Поздравляю! Ты завершил квест!";
-  answerInput.style.display = "none";
-  nextButton.style.display = "none";
-  progressBar.style.width = "100%";
-  progressText.textContent = "Квест завершён";
-}
-
-showQuestion(currentQuestionIndex);
+document.getElementById("question-text").textContent = questions[0];

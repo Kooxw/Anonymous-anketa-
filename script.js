@@ -1,44 +1,53 @@
-// Список вопросов — можешь заменить своими
 const questions = [
-  "Твоё имя (или что-то загадочное)?",
-  "Что бы ты мне сказал(а) первым делом?",
-  "Какое слово приходит в голову обо мне?",
-  "Что бы ты посоветовал(а) мне сделать прямо сейчас?",
-  "Что тебя заставило в последний раз искренне улыбнуться?",
+  "Как тебя можно назвать (или оставь загадку)?",
+  "Что бы ты сказал(а) мне первым делом?",
+  "Какое слово у тебя ассоциируется со мной?",
+  "Что мне стоит сделать прямо сейчас?",
+  "Когда ты в последний раз чувствовал радость?",
   "Оставь мне анонимное послание на будущее:",
-  "Твой плейлист для этого момента (ссылка):"
+  "Поделись плейлистом (ссылка или название):"
 ];
 
 let currentQuestionIndex = 0;
-
-// Находим элементы
 const questionDisplay = document.getElementById("question-display");
 const answerInput = document.getElementById("answer-input");
 const nextButton = document.getElementById("next-button");
+const progressBar = document.getElementById("progress-bar");
+const progressText = document.getElementById("progress-text");
+const character = document.getElementById("character");
+const checkpoints = document.querySelectorAll(".checkpoint");
 
-// Функция для показа вопроса
 function showQuestion(index) {
   questionDisplay.textContent = questions[index];
   answerInput.value = "";
-  answerInput.focus(); // чтобы курсор сразу был в поле ввода
+  answerInput.focus();
+
+  const progressPercent = ((index + 1) / questions.length) * 100;
+  progressBar.style.width = progressPercent + "%";
+  progressText.textContent = `Вопрос ${index + 1} из ${questions.length}`;
+
+  const characterPosition = checkpoints[index]?.style.left || "90%";
+  character.style.left = characterPosition;
 }
 
-// Обработчик нажатия на кнопку "Далее"
 nextButton.addEventListener("click", () => {
-  // Здесь можно сохранить ответ куда-то, если нужно
-  const userAnswer = answerInput.value;
-  console.log("Ответ:", userAnswer);
+  const userAnswer = answerInput.value.trim();
+  console.log(`Ответ: ${userAnswer}`);
 
   currentQuestionIndex++;
   if (currentQuestionIndex < questions.length) {
     showQuestion(currentQuestionIndex);
   } else {
-    // Если вопросы закончились
-    questionDisplay.textContent = "Спасибо за прохождение анкеты!";
-    answerInput.style.display = "none";
-    nextButton.style.display = "none";
+    finishSurvey();
   }
 });
 
-// Показываем первый вопрос
+function finishSurvey() {
+  questionDisplay.textContent = "Поздравляю! Ты завершил квест!";
+  answerInput.style.display = "none";
+  nextButton.style.display = "none";
+  progressBar.style.width = "100%";
+  progressText.textContent = "Квест завершён";
+}
+
 showQuestion(currentQuestionIndex);

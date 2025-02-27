@@ -16,7 +16,7 @@ function nextQuestion() {
     if (currentQuestion < questions.length - 1) {
         currentQuestion++;
         document.getElementById("question-text").textContent = questions[currentQuestion];
-        progress.style.width = ${(currentQuestion / (questions.length - 1)) * 100}%;
+        progress.style.width = `${(currentQuestion / (questions.length - 1)) * 100}%`;
 
         // Перемещение персонажа по рельсам
         const positions = ["5%", "20%", "35%", "50%", "65%", "80%", "95%"];

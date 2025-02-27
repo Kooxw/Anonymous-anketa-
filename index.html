@@ -9,14 +9,16 @@
 <body>
     <div class="container">
         <h1>Твоя анонимная анкета-квест</h1>
-        <div class="map-container">
-            <img src="map.png" alt="Карта квеста" class="map">
-            <img src="character.png" alt="Персонаж" class="character">
+        <div class="progress-container">
+            <div class="map">
+                <img src="map.png" alt="Карта квеста" class="map-image">
+                <div class="character"></div>
+            </div>
             <div class="progress-bar">
                 <div class="progress"></div>
             </div>
         </div>
-        <div class="question-box">
+        <div class="question-container">
             <p id="question-text"></p>
             <input type="text" id="answer" placeholder="Твой ответ...">
             <button onclick="nextQuestion()">Далее</button>
